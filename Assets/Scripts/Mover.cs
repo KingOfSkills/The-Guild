@@ -17,6 +17,7 @@ public class Mover : MonoBehaviour
         {
             MoveToMouse();
         }
+        UpdateAnimator();
     }
 
     private void MoveToMouse()
@@ -29,5 +30,13 @@ public class Mover : MonoBehaviour
             agent.SetDestination(hit.point);
             Debug.DrawRay(lastRay.origin, lastRay.direction * 25f);
         }
+    }
+
+    private void UpdateAnimator()
+    {
+        Vector3 velocity = agent.velocity;
+        Vector3 localVelocity = transform.InverseTransformDirection(velocity);
+        float speed = localVelocity.z;
+        GetComponent<Animator>().SetFloat("forwardSpeed", speed);
     }
 }
