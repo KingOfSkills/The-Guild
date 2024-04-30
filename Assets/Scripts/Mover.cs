@@ -3,8 +3,6 @@ using UnityEngine.AI;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private Transform target;
-
     private NavMeshAgent agent;
     private Ray lastRay;
 
@@ -17,7 +15,6 @@ public class Mover : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1))
         {
-            Debug.Log("Right Clicked: 1");
             MoveToMouse();
         }
     }
@@ -25,7 +22,6 @@ public class Mover : MonoBehaviour
     private void MoveToMouse()
     {
         RaycastHit hit;
-        agent.SetDestination(target.position);
         lastRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         bool hasHit = Physics.Raycast(lastRay, out hit);
         if (hasHit)
