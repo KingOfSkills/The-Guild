@@ -1,4 +1,3 @@
-using System.Runtime.CompilerServices;
 using TheGuild.Combat;
 using TheGuild.Movement;
 using UnityEngine;
@@ -39,6 +38,7 @@ namespace TheGuild.Control
                 if (Input.GetMouseButton(1))
                 {
                     GetComponent<Mover>().MoveTo(hit.point);
+                    GetComponent<Fighter>().Cancel();
                 }
                 return true;
             }

@@ -1,12 +1,41 @@
+using TheGuild.Movement;
 using UnityEngine;
 
 namespace TheGuild.Combat
 {
     public class Fighter : MonoBehaviour
     {
-        public void Attack(CombatTarget target)
+        [SerializeField] private float attackRange = 2f;
+
+        Transform target;
+
+        private void Update()
         {
-            Debug.Log("Attack");
+            if (target == null) return;
+
+            if (!IsInAttackRange())
+            {
+                GetComponent<Mover>().MoveTo(target.position);
+            }
+            else
+            {
+                GetComponent<Mover>().Stop();
+            }
+        }
+
+        public void Attack(CombatTarget combatTarget)
+        {
+            target = combatTarget.transform;
+        }
+
+        public bool IsInAttackRange()
+        {
+            return Vector3.Distance(transform.position, target.position) <= attackRange;
+        }
+
+        public void Cancel()
+        {
+            target = null;
         }
     }
 }
