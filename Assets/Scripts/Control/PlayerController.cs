@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using TheGuild.Combat;
 using TheGuild.Movement;
 using UnityEngine;
@@ -8,11 +9,11 @@ namespace TheGuild.Control
     {
         private void Update()
         {
-            InteractWithMovement();
-            InteractWithCombat();
+            if (InteractWithCombat()) return;
+            if (InteractWithMovement()) return;
         }
 
-        private void InteractWithCombat()
+        private bool InteractWithCombat()
         {
             RaycastHit[] hits = Physics.RaycastAll(GetMouseRay());
             foreach (RaycastHit hit in hits)
@@ -23,26 +24,25 @@ namespace TheGuild.Control
                     {
                         GetComponent<Fighter>().Attack(target);
                     }
+                    return true;
                 }
             }
+            return false;
         }
 
-        private void InteractWithMovement()
-        {
-            if (Input.GetMouseButton(1))
-            {
-                MoveToMouse();
-            }
-        }
-
-        private void MoveToMouse()
+        private bool InteractWithMovement()
         {
             RaycastHit hit;
             bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
             if (hasHit)
             {
-                GetComponent<Mover>().MoveTo(hit.point);
+                if (Input.GetMouseButton(1))
+                {
+                    GetComponent<Mover>().MoveTo(hit.point);
+                }
+                return true;
             }
+            return false;
         }
 
         private static Ray GetMouseRay()
