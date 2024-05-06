@@ -7,11 +7,15 @@ namespace TheGuild.Combat
     public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] private float attackRange = 2f;
+        [SerializeField] private float attackCooldown = 3f;
 
-        Transform target;
+        private Transform target;
+        private float timeSinceLastAttack = 0f;
 
         private void Update()
         {
+            timeSinceLastAttack += Time.deltaTime;
+
             if (target == null) return;
 
             if (!IsInAttackRange())
@@ -27,7 +31,11 @@ namespace TheGuild.Combat
 
         private void AttackBehaviour()
         {
-            GetComponent<Animator>().SetTrigger("attack");
+            if (timeSinceLastAttack >= attackCooldown)
+            {
+                GetComponent<Animator>().SetTrigger("attack");
+                timeSinceLastAttack = 0f;
+            }
         }
 
         public void Attack(CombatTarget combatTarget)
