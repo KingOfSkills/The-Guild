@@ -37,8 +37,7 @@ namespace TheGuild.Control
             {
                 if (Input.GetMouseButton(1))
                 {
-                    GetComponent<Mover>().MoveTo(hit.point);
-                    GetComponent<Fighter>().Cancel();
+                    GetComponent<Mover>().StartMoveAction(hit.point);
                 }
                 return true;
             }

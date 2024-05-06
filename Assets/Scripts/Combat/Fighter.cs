@@ -1,3 +1,4 @@
+using TheGuild.Core;
 using TheGuild.Movement;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace TheGuild.Combat
 
         public void Attack(CombatTarget combatTarget)
         {
+            GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.transform;
         }
 

@@ -1,3 +1,5 @@
+using TheGuild.Combat;
+using TheGuild.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,6 +17,13 @@ namespace TheGuild.Movement
         private void Update()
         {
             UpdateAnimator();
+        }
+
+        public void StartMoveAction(Vector3 destination)
+        {
+            GetComponent<ActionScheduler>().StartAction(this);
+            GetComponent<Fighter>().Cancel();
+            MoveTo(destination);
         }
 
         public void MoveTo(Vector3 destination)
