@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace TheGuild.Combat
 {
-    public class Fighter : MonoBehaviour
+    public class Fighter : MonoBehaviour, IAction
     {
         [SerializeField] private float attackRange = 2f;
 
@@ -20,7 +20,7 @@ namespace TheGuild.Combat
             }
             else
             {
-                GetComponent<Mover>().Stop();
+                GetComponent<Mover>().Cancel();
             }
         }
 

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 namespace TheGuild.Movement
 {
-    public class Mover : MonoBehaviour
+    public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent navMeshAgent;
 
@@ -32,7 +32,7 @@ namespace TheGuild.Movement
             navMeshAgent.isStopped = false;
         }
 
-        public void Stop()
+        public void Cancel()
         {
             navMeshAgent.isStopped = true;
         }
