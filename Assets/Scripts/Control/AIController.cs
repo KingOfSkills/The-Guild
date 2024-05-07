@@ -9,8 +9,9 @@ namespace TheGuild.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] private float chaseRadius = 5f;
-        [SerializeField] private float suspisiousTime = 3f;
+        [SerializeField] private float suspisiousTime = 5f;
         [SerializeField] private PatrolPath patrolPath;
+        [SerializeField] private float pauseTime = 3f;
 
         private Fighter fighter;
         private Health health;
@@ -21,6 +22,7 @@ namespace TheGuild.Control
         private Vector3 guardPosition;
         private int currentWaypointIndex = 0;
         private float atWaypointRadius = .25f;
+        private float timeAtWaypoint = 0f;
 
         private float timeSinceLastSawPlayer = 100f;
 
@@ -63,7 +65,12 @@ namespace TheGuild.Control
             {
                 if (AtWaypoint())
                 {
-                    GetNextWaypoint();
+                    timeAtWaypoint += Time.deltaTime;
+                    if (timeAtWaypoint > pauseTime)
+                    {
+                        GetNextWaypoint();
+                        timeAtWaypoint = 0f;
+                    }
                 }
             }
 
