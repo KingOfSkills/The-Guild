@@ -35,9 +35,15 @@ namespace TheGuild.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack >= attackCooldown)
             {
-                GetComponent<Animator>().SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0f;
             }
+        }
+
+        private void TriggerAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("cancelAttack");
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         // Animation Event
@@ -66,8 +72,14 @@ namespace TheGuild.Combat
 
         public void Cancel()
         {
-            GetComponent<Animator>().SetTrigger("cancelAttack");
+            StopAttack();
             target = null;
+        }
+
+        private void StopAttack()
+        {
+            GetComponent<Animator>().ResetTrigger("attack");
+            GetComponent<Animator>().SetTrigger("cancelAttack");
         }
     }
 }
