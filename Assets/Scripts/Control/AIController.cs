@@ -35,5 +35,12 @@ namespace TheGuild.Control
         {
             return Vector3.Distance(transform.position, player.transform.position) < chaseRadius;
         }
+
+        // Called by Unity
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, chaseRadius);
+        }
     }
 }
