@@ -18,5 +18,10 @@ namespace TheGuild.Combat
             }
             Debug.Log($"Remaining health: {health}");
         }
+
+        public bool IsDead()
+        {
+            return isDead;
+        }
     }
 }
