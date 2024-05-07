@@ -1,4 +1,5 @@
 using TheGuild.Combat;
+using TheGuild.Core;
 using UnityEngine;
 
 namespace TheGuild.Control
@@ -18,6 +19,8 @@ namespace TheGuild.Control
 
         private void Update()
         {
+            if (GetComponent<Health>().IsDead()) return;
+
             if (IsInChaseRadius())
             {
                 fighter.Attack(player);

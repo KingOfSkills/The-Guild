@@ -11,7 +11,7 @@ namespace TheGuild.Combat
         [SerializeField] private float weaponDamage = 20f;
 
         private Health target;
-        private float timeSinceLastAttack = 0f;
+        private float timeSinceLastAttack = 100f;
 
         private void Update()
         {

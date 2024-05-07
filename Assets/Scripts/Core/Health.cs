@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace TheGuild.Combat
+namespace TheGuild.Core
 {
     public class Health : MonoBehaviour
     {
@@ -13,9 +13,17 @@ namespace TheGuild.Combat
             health = Mathf.Max(health - damage, 0f);
             if (health == 0 && !isDead)
             {
-                GetComponent<Animator>().SetTrigger("die");
-                isDead = true;
+                Die();
             }
+        }
+
+        private void Die()
+        {
+            if (isDead) return;
+
+            isDead = true;
+            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<ActionScheduler>().CancelCurrentAction();
         }
 
         public bool IsDead()

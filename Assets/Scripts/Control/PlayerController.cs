@@ -1,4 +1,5 @@
 using TheGuild.Combat;
+using TheGuild.Core;
 using TheGuild.Movement;
 using UnityEngine;
 
@@ -6,8 +7,19 @@ namespace TheGuild.Control
 {
     public class PlayerController : MonoBehaviour
     {
+        private Fighter fighter;
+        private Health health;
+
+        private void Start()
+        {
+            fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
+        }
+
         private void Update()
         {
+            if (health.IsDead()) return;
+
             if (InteractWithCombat()) return;
             if (InteractWithMovement()) return;
         }
@@ -19,14 +31,14 @@ namespace TheGuild.Control
             {
                 if (hit.transform.TryGetComponent(out CombatTarget target))
                 {
-                    if (!GetComponent<Fighter>().CanAttack(target.gameObject))
+                    if (!fighter.CanAttack(target.gameObject))
                     {
                         continue;
                     }
 
                     if (Input.GetMouseButtonDown(1))
                     {
-                        GetComponent<Fighter>().Attack(target.gameObject);
+                        fighter.Attack(target.gameObject);
                     }
                     return true;
                 }

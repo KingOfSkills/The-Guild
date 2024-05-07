@@ -1,3 +1,4 @@
+using TheGuild.Core;
 using UnityEngine;
 
 namespace TheGuild.Combat
