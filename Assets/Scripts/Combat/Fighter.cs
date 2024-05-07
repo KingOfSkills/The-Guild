@@ -8,6 +8,7 @@ namespace TheGuild.Combat
     {
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float attackCooldown = 3f;
+        [SerializeField] private float weaponDamage = 20f;
 
         private Transform target;
         private float timeSinceLastAttack = 0f;
@@ -38,6 +39,19 @@ namespace TheGuild.Combat
             }
         }
 
+        // Animation Event
+        private void Hit()
+        {
+            if (target.TryGetComponent(out Health health))
+            {
+                health.TakeDamage(weaponDamage);
+            }
+            else
+            {
+                Debug.Log("Cannot deal damage");
+            }
+        }
+
         public void Attack(CombatTarget combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
@@ -52,12 +66,6 @@ namespace TheGuild.Combat
         public void Cancel()
         {
             target = null;
-        }
-
-        // Animation Event
-        void Hit()
-        {
-
         }
     }
 }
