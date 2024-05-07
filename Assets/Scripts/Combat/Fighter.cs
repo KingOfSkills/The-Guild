@@ -53,6 +53,12 @@ namespace TheGuild.Combat
             target = combatTarget.GetComponent<Health>();
         }
 
+        public bool CanAttack(CombatTarget combatTarget)
+        {
+            Health targetHealh = combatTarget.GetComponent<Health>();
+            return !targetHealh.IsDead() && targetHealh != null;
+        }
+
         public bool IsInAttackRange()
         {
             return Vector3.Distance(transform.position, target.transform.position) <= attackRange;
