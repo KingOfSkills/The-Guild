@@ -799,6 +799,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2948761691620627456, guid: ec461714e6f7eec499b99d3666bfda32, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1287353480992507844, guid: ec461714e6f7eec499b99d3666bfda32, type: 3}
       propertyPath: m_Name
       value: Enemy
@@ -2865,6 +2869,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2948761691620627456, guid: ec461714e6f7eec499b99d3666bfda32, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1287353480992507844, guid: ec461714e6f7eec499b99d3666bfda32, type: 3}
       propertyPath: m_Name
       value: Enemy (1)
@@ -3826,7 +3834,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4287553761697887630, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
       propertyPath: attackCooldown
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

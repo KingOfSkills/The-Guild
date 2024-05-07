@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 namespace TheGuild.Movement
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class Mover : MonoBehaviour, IAction
     {
         private NavMeshAgent navMeshAgent;

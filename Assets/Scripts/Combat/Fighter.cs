@@ -53,13 +53,13 @@ namespace TheGuild.Combat
             target.TakeDamage(weaponDamage);
         }
 
-        public void Attack(CombatTarget combatTarget)
+        public void Attack(GameObject combatTarget)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
         }
 
-        public bool CanAttack(CombatTarget combatTarget)
+        public bool CanAttack(GameObject combatTarget)
         {
             Health targetHealh = combatTarget.GetComponent<Health>();
             return !targetHealh.IsDead() && targetHealh != null;

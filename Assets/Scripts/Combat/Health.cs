@@ -16,7 +16,6 @@ namespace TheGuild.Combat
                 GetComponent<Animator>().SetTrigger("die");
                 isDead = true;
             }
-            Debug.Log($"Remaining health: {health}");
         }
 
         public bool IsDead()

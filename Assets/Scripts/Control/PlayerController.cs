@@ -19,14 +19,14 @@ namespace TheGuild.Control
             {
                 if (hit.transform.TryGetComponent(out CombatTarget target))
                 {
-                    if (!GetComponent<Fighter>().CanAttack(target))
+                    if (!GetComponent<Fighter>().CanAttack(target.gameObject))
                     {
                         continue;
                     }
 
                     if (Input.GetMouseButtonDown(1))
                     {
-                        GetComponent<Fighter>().Attack(target);
+                        GetComponent<Fighter>().Attack(target.gameObject);
                     }
                     return true;
                 }
