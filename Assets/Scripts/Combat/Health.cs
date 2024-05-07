@@ -9,6 +9,10 @@ namespace TheGuild.Combat
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0f);
+            if (health == 0)
+            {
+                GetComponent<Animator>().SetTrigger("die");
+            }
             Debug.Log($"Remaining health: {health}");
         }
     }
