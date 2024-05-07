@@ -1,5 +1,7 @@
+using System;
 using TheGuild.Combat;
 using TheGuild.Core;
+using TheGuild.Movement;
 using UnityEngine;
 
 namespace TheGuild.Control
@@ -7,28 +9,89 @@ namespace TheGuild.Control
     public class AIController : MonoBehaviour
     {
         [SerializeField] private float chaseRadius = 5f;
+        [SerializeField] private float suspisiousTime = 3f;
+        [SerializeField] private PatrolPath patrolPath;
 
         private Fighter fighter;
+        private Health health;
+        private Mover mover;
+
         private GameObject player;
+
+        private Vector3 guardPosition;
+        private int currentWaypointIndex = 0;
+        private float atWaypointRadius = .25f;
+
+        private float timeSinceLastSawPlayer = 100f;
 
         private void Start()
         {
             fighter = GetComponent<Fighter>();
+            health = GetComponent<Health>();
+            mover = GetComponent<Mover>();
             player = FindObjectOfType<PlayerController>().gameObject;
+
+            guardPosition = transform.position;
         }
 
         private void Update()
         {
-            if (GetComponent<Health>().IsDead()) return;
+            if (health.IsDead()) return;
 
             if (IsInChaseRadius())
             {
-                fighter.Attack(player);
+                timeSinceLastSawPlayer = 0f;
+                AttackBehaviour();
+            }
+            else if (!IsInChaseRadius() && timeSinceLastSawPlayer < suspisiousTime)
+            {
+                SuspisiousBehaviour();
             }
             else
             {
-                fighter.Cancel();
+                PatrolBehaviour();
             }
+
+            timeSinceLastSawPlayer += Time.deltaTime;
+        }
+
+        private void PatrolBehaviour()
+        {
+            Vector3 nextPosition = patrolPath.GetWaypoint(currentWaypointIndex);
+
+            if (patrolPath != null)
+            {
+                if (AtWaypoint())
+                {
+                    GetNextWaypoint();
+                }
+            }
+
+            mover.StartMoveAction(nextPosition);
+        }
+
+        private void GetNextWaypoint()
+        {
+            currentWaypointIndex = patrolPath.GetNextIndex(currentWaypointIndex);
+        }
+
+        private bool AtWaypoint()
+        {
+            if (Vector3.Distance(transform.position, patrolPath.GetWaypoint(currentWaypointIndex)) < atWaypointRadius)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void SuspisiousBehaviour()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void AttackBehaviour()
+        {
+            fighter.Attack(player);
         }
 
         public bool IsInChaseRadius()
