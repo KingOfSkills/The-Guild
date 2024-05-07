@@ -32,6 +32,7 @@ namespace TheGuild.Combat
 
         private void AttackBehaviour()
         {
+            transform.LookAt(target.transform);
             if (timeSinceLastAttack >= attackCooldown)
             {
                 GetComponent<Animator>().SetTrigger("attack");
