@@ -12,6 +12,8 @@ namespace TheGuild.Control
         [SerializeField] private float suspisiousTime = 5f;
         [SerializeField] private PatrolPath patrolPath;
         [SerializeField] private float pauseTime = 3f;
+        [Range(0f, 1f)]
+        [SerializeField] private float patrolSpeedFraction = .27f;
 
         private Fighter fighter;
         private Health health;
@@ -57,12 +59,22 @@ namespace TheGuild.Control
             timeSinceLastSawPlayer += Time.deltaTime;
         }
 
+        private void SuspisiousBehaviour()
+        {
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+        }
+
+        private void AttackBehaviour()
+        {
+            fighter.Attack(player);
+        }
+
         private void PatrolBehaviour()
         {
-            Vector3 nextPosition = patrolPath.GetWaypoint(currentWaypointIndex);
-
             if (patrolPath != null)
             {
+                guardPosition = patrolPath.GetWaypoint(currentWaypointIndex);
+
                 if (AtWaypoint())
                 {
                     timeAtWaypoint += Time.deltaTime;
@@ -72,9 +84,10 @@ namespace TheGuild.Control
                         timeAtWaypoint = 0f;
                     }
                 }
+
             }
 
-            mover.StartMoveAction(nextPosition);
+            mover.StartMoveAction(guardPosition, patrolSpeedFraction);
         }
 
         private void GetNextWaypoint()
@@ -89,16 +102,6 @@ namespace TheGuild.Control
                 return true;
             }
             return false;
-        }
-
-        private void SuspisiousBehaviour()
-        {
-            GetComponent<ActionScheduler>().CancelCurrentAction();
-        }
-
-        private void AttackBehaviour()
-        {
-            fighter.Attack(player);
         }
 
         public bool IsInChaseRadius()

@@ -21,7 +21,7 @@ namespace TheGuild.Combat
 
             if (!IsInAttackRange())
             {
-                GetComponent<Mover>().MoveTo(target.transform.position);
+                GetComponent<Mover>().MoveTo(target.transform.position, 1f);
             }
             else
             {

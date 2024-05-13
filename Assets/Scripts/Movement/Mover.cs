@@ -8,6 +8,8 @@ namespace TheGuild.Movement
     [RequireComponent(typeof(NavMeshAgent))]
     public class Mover : MonoBehaviour, IAction
     {
+        [SerializeField] private float maxSpeed = 5.66f;
+
         private NavMeshAgent navMeshAgent;
         private Health health;
 
@@ -27,16 +29,17 @@ namespace TheGuild.Movement
             UpdateAnimator();
         }
 
-        public void StartMoveAction(Vector3 destination)
+        public void StartMoveAction(Vector3 destination, float speedFraction)
         {
             GetComponent<ActionScheduler>().StartAction(this);
             GetComponent<Fighter>().Cancel();
-            MoveTo(destination);
+            MoveTo(destination, speedFraction);
         }
 
-        public void MoveTo(Vector3 destination)
+        public void MoveTo(Vector3 destination, float speedFraction)
         {
             navMeshAgent.SetDestination(destination);
+            navMeshAgent.speed = maxSpeed * Mathf.Clamp01(speedFraction);
             navMeshAgent.isStopped = false;
         }
 
