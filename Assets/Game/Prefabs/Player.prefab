@@ -64,8 +64,11 @@ PrefabInstance:
       addedObject: {fileID: 8359774847314653657}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3988797690682904994, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
-      insertIndex: -1
+      insertIndex: 2
       addedObject: {fileID: 7107715994273131711}
+    - targetCorrespondingSourceObject: {fileID: 3988797690682904994, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 8470033883347362781}
     - targetCorrespondingSourceObject: {fileID: 3988797690682904994, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7806210512936972577}
@@ -106,6 +109,29 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &8470033883347362781
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582285785268139135}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7806210512936972577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +156,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3fa9e3ecafd5b54d98fdd8bd9889425, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxSpeed: 5.66
 --- !u!114 &4287553761697887630
 MonoBehaviour:
   m_ObjectHideFlags: 0

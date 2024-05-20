@@ -73,8 +73,6 @@ namespace TheGuild.Control
         {
             if (patrolPath != null)
             {
-                guardPosition = patrolPath.GetWaypoint(currentWaypointIndex);
-
                 if (AtWaypoint())
                 {
                     timeAtWaypoint += Time.deltaTime;
@@ -83,6 +81,10 @@ namespace TheGuild.Control
                         GetNextWaypoint();
                         timeAtWaypoint = 0f;
                     }
+                }
+                else
+                {
+                    guardPosition = patrolPath.GetWaypoint(currentWaypointIndex);
                 }
 
             }
