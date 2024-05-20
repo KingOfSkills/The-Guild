@@ -2100,6 +2100,7 @@ GameObject:
   - component: {fileID: 154704917}
   - component: {fileID: 154704918}
   - component: {fileID: 154704919}
+  - component: {fileID: 154704920}
   m_Layer: 2
   m_Name: Intro Sequence
   m_TagString: Untagged
@@ -2209,6 +2210,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3215cd38ad1418d4383505c10a9d66d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &154704920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154704914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cde3042f87c7e348b6440b220524dd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &169411071
@@ -20151,10 +20164,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1582285785268139135, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
       propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 1582285785268139135, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
-      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3838005430242853463, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
