@@ -1,10 +1,11 @@
 using System.Collections;
+using System.Threading;
 using TheGuild.Control;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
-namespace TheGuild.Core
+namespace TheGuild.SceneManagement
 {
     public class Portal : MonoBehaviour
     {
@@ -20,6 +21,9 @@ namespace TheGuild.Core
         [SerializeField] private int sceneIndexToLoad = -1;
         [SerializeField] private Transform spawnPoint;
         [SerializeField] private PortalID portalID;
+        [SerializeField] private float fadeOutTime = .5f;
+        [SerializeField] private float fadeWaitTime = 1f;
+        [SerializeField] private float fadeInTime = .5f;
 
         private void OnTriggerEnter(Collider other)
         {
@@ -37,20 +41,29 @@ namespace TheGuild.Core
                 yield break;
             }
 
+            Fader fader = FindObjectOfType<Fader>();
+
+            yield return StartCoroutine(fader.FadeOutRoutine(fadeOutTime));
+
             DontDestroyOnLoad(gameObject);
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
+
             print("Scene Loaded");
             Portal otherPortal = GetOtherPortal();
-            otherPortal.UpdatePlayerPositionRotation();
+            UpdatePlayerPositionRotation(otherPortal);
+            yield return new WaitForSeconds(fadeWaitTime);
+
+            yield return StartCoroutine(fader.FadeInRoutine(fadeInTime));
+
             Destroy(gameObject);
         }
 
-        public void UpdatePlayerPositionRotation()
+        public void UpdatePlayerPositionRotation(Portal otherPortal)
         {
             PlayerController player = FindObjectOfType<PlayerController>();
-            player.GetComponent<NavMeshAgent>().Warp(spawnPoint.position);
+            player.GetComponent<NavMeshAgent>().Warp(otherPortal.spawnPoint.position);
             //player.transform.position = spawnPoint.position;
-            player.transform.rotation = spawnPoint.rotation;
+            player.transform.rotation = otherPortal.spawnPoint.rotation;
         }
 
         private Portal GetOtherPortal()
