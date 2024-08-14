@@ -1,8 +1,9 @@
+using TheGuild.Saving;
 using UnityEngine;
 
 namespace TheGuild.Core
 {
-    public class Health : MonoBehaviour
+    public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] private float health = 100f;
 
@@ -29,6 +30,25 @@ namespace TheGuild.Core
         public bool IsDead()
         {
             return isDead;
+        }
+
+        public void Save(string id)
+        {
+            ES3.Save($"{id}health", health);
+            ES3.Save($"{id}isDead", isDead);
+        }
+
+        public void Load(string id)
+        {
+            health = ES3.Load<float>($"{id}health");
+            isDead = ES3.Load<bool>($"{id}isDead");
+
+            PostLoad();
+        }
+
+        public void PostLoad()
+        {
+            TakeDamage(0);
         }
     }
 }

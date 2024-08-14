@@ -2,11 +2,12 @@ using System;
 using TheGuild.Combat;
 using TheGuild.Core;
 using TheGuild.Movement;
+using TheGuild.Saving;
 using UnityEngine;
 
 namespace TheGuild.Control
 {
-    public class AIController : MonoBehaviour
+    public class AIController : MonoBehaviour, ISaveable
     {
         [SerializeField] private float chaseRadius = 5f;
         [SerializeField] private float suspisiousTime = 5f;
@@ -109,6 +110,16 @@ namespace TheGuild.Control
         public bool IsInChaseRadius()
         {
             return Vector3.Distance(transform.position, player.transform.position) < chaseRadius;
+        }
+
+        public void Save(string id)
+        {
+            ES3.Save($"{id}currentWaypointIndex", currentWaypointIndex);
+        }
+
+        public void Load(string id)
+        {
+            currentWaypointIndex = ES3.Load<int>($"{id}currentWaypointIndex");
         }
 
         // Called by Unity
