@@ -1,6 +1,6 @@
 using System.Collections;
-using System.Threading;
 using TheGuild.Control;
+using TheGuild.Saving;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -50,7 +50,8 @@ namespace TheGuild.SceneManagement
             savingWrapper.Save();
 
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
-
+            SavingSystem.LastSceneSavedIndex = sceneIndexToLoad;
+            savingWrapper.Load();
             savingWrapper.Load();
 
             Portal otherPortal = GetOtherPortal();

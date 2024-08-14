@@ -12,6 +12,11 @@ namespace TheGuild.SceneManagement
             canvasGroup = GetComponent<CanvasGroup>();
         }
 
+        public void FadeOutImmediately()
+        {
+            canvasGroup.alpha = 1f;
+        }
+
         public IEnumerator FadeOutRoutine(float fadeTime)
         {
             while (canvasGroup.alpha < 1)

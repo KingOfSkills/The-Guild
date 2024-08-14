@@ -64,8 +64,8 @@ namespace TheGuild.Movement
 
         public void Load(string id)
         {
-            Transform transform = ES3.Load<Transform>($"{id}transform ");
-
+            //Transform transform = ES3.Load<Transform>($"{id}transform ");
+            ES3.LoadInto($"{id}transform ", transform);
             navMeshAgent.enabled = false;
             this.transform.position = transform.transform.position;
             this.transform.rotation = transform.transform.rotation;
