@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4658260295707836104
+--- !u!1 &708775660289179680
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,67 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4785585129664049726}
-  - component: {fileID: 7780233442809852226}
-  - component: {fileID: 6435363697103677689}
-  m_Layer: 0
-  m_Name: SaveSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4785585129664049726
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658260295707836104}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8225400681218817203}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7780233442809852226
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658260295707836104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 36f54b488dbe09c4e8268b5a381890ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6435363697103677689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4658260295707836104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fadc7c8ae76471a4084b1e5ad7fa4d63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &8403059384898343773
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8225400681218817203}
-  - component: {fileID: 8252338784281423184}
-  - component: {fileID: 779385106715276141}
+  - component: {fileID: 5635922380061513524}
+  - component: {fileID: 8289312012215068401}
+  - component: {fileID: 2842331273101165821}
   m_Layer: 0
   m_Name: Easy Save 3 Manager
   m_TagString: Untagged
@@ -76,28 +18,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8225400681218817203
+--- !u!4 &5635922380061513524
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8403059384898343773}
+  m_GameObject: {fileID: 708775660289179680}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4785585129664049726}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8252338784281423184
+--- !u!114 &8289312012215068401
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8403059384898343773}
+  m_GameObject: {fileID: 708775660289179680}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a83408fcc9044c4fbc7e5d09a369ab6, type: 3}
@@ -270,7 +212,7 @@ MonoBehaviour:
     - {fileID: 7139108756038100421, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 8071362303470963711, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 208784002183129111, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
-    - {fileID: 6435363697103677689}
+    - {fileID: 0}
     - {fileID: 4995666738752192803, guid: 5d4c4e3815ede9d4da73ae4300cc66a0, type: 3}
     - {fileID: 8359774847314681095, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
     - {fileID: 8359774847314425495, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
@@ -675,7 +617,7 @@ MonoBehaviour:
     - {fileID: 11500000, guid: 1617d5144192c334baf4622d4e2a1ee4, type: 3}
     - {fileID: 11500000, guid: fa7155796051b734daa718462081dc5f, type: 3}
     - {fileID: 7400000, guid: 1315bcd7509173f44bc6655b2673dd4d, type: 3}
-    - {fileID: 4785585129664049726}
+    - {fileID: 0}
     - {fileID: 7262622444106164661, guid: 3de638911a1946a4ea62e15e4ee959b0, type: 3}
     - {fileID: 11500000, guid: 90fb794a295e73545af71bcdb7375791, type: 3}
     - {fileID: 11500000, guid: 8cde3042f87c7e348b6440b220524dd1, type: 3}
@@ -736,7 +678,7 @@ MonoBehaviour:
     - {fileID: 3150868563911597233, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 9183552931506288658, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 6110542826109062481, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
-    - {fileID: 7780233442809852226}
+    - {fileID: 0}
     - {fileID: 7139108756038431311, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 7139108756038537773, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
     - {fileID: 7139108756038434197, guid: 6e8af8966d009c442a474151b817dab9, type: 3}
@@ -971,7 +913,7 @@ MonoBehaviour:
     - {fileID: 8359774847313377483, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
     - {fileID: 61031023647802539, guid: 5d4c4e3815ede9d4da73ae4300cc66a0, type: 3}
     - {fileID: 2149941365300362808, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
-    - {fileID: 4658260295707836104}
+    - {fileID: 0}
     - {fileID: 11500000, guid: c3fa9e3ecafd5b54d98fdd8bd9889425, type: 3}
     - {fileID: 8359774847313373249, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
     - {fileID: 8359774847314689543, guid: 289a43c04770ea54eb3acf777b437812, type: 3}
@@ -3964,13 +3906,13 @@ MonoBehaviour:
     - {fileID: 0}
     - {fileID: 0}
     - {fileID: 0}
---- !u!114 &779385106715276141
+--- !u!114 &2842331273101165821
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8403059384898343773}
+  m_GameObject: {fileID: 708775660289179680}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9107aee0ced90422da95f0b31680501f, type: 3}

@@ -43,12 +43,11 @@ namespace TheGuild.Core
             health = ES3.Load<float>($"{id}health");
             isDead = ES3.Load<bool>($"{id}isDead");
 
-            PostLoad();
-        }
-
-        public void PostLoad()
-        {
-            TakeDamage(0);
+            if (isDead)
+            {
+                isDead = false;
+                Die();
+            }
         }
     }
 }

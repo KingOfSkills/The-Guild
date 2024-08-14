@@ -10,6 +10,9 @@ namespace TheGuild.Control
         private Fighter fighter;
         private Health health;
 
+        [SerializeField] private LayerMask groundLayer;
+        private float distance = 100f;
+
         private void Start()
         {
             fighter = GetComponent<Fighter>();
@@ -49,7 +52,7 @@ namespace TheGuild.Control
         private bool InteractWithMovement()
         {
             RaycastHit hit;
-            bool hasHit = Physics.Raycast(GetMouseRay(), out hit);
+            bool hasHit = Physics.Raycast(GetMouseRay(), out hit, distance, groundLayer);
             if (hasHit)
             {
                 if (Input.GetMouseButton(1))

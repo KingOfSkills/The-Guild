@@ -19,13 +19,13 @@ namespace TheGuild.SceneManagement
             }
         }
 
-        private void Save()
+        public  void Save()
         {
             print("Saving Game");
             GetComponent<SavingSystem>().Save();
         }
 
-        private void Load()
+        public void Load()
         {
             print("Loading Game");
             GetComponent<SavingSystem>().Load();

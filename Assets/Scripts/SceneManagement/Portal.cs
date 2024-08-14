@@ -41,16 +41,22 @@ namespace TheGuild.SceneManagement
                 yield break;
             }
 
-            Fader fader = FindObjectOfType<Fader>();
+            DontDestroyOnLoad(gameObject);
 
+            Fader fader = FindObjectOfType<Fader>();
             yield return StartCoroutine(fader.FadeOutRoutine(fadeOutTime));
 
-            DontDestroyOnLoad(gameObject);
+            SavingWrapper savingWrapper = FindObjectOfType<SavingWrapper>();
+            savingWrapper.Save();
+
             yield return SceneManager.LoadSceneAsync(sceneIndexToLoad);
 
-            print("Scene Loaded");
+            savingWrapper.Load();
+
             Portal otherPortal = GetOtherPortal();
             UpdatePlayerPositionRotation(otherPortal);
+
+            savingWrapper.Save();
             yield return new WaitForSeconds(fadeWaitTime);
 
             yield return StartCoroutine(fader.FadeInRoutine(fadeInTime));

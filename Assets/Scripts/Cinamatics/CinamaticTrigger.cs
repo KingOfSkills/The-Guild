@@ -1,10 +1,11 @@
 using TheGuild.Control;
+using TheGuild.Saving;
 using UnityEngine;
 using UnityEngine.Playables;
 
 namespace TheGuild.Cinamatics
 {
-    public class CinamaticTrigger : MonoBehaviour
+    public class CinamaticTrigger : MonoBehaviour, ISaveable
     {
         bool hasPlayed = false;
 
@@ -15,6 +16,16 @@ namespace TheGuild.Cinamatics
                 hasPlayed = true;
                 GetComponent<PlayableDirector>().Play();
             }
+        }
+
+        public void Save(string id)
+        {
+            ES3.Save($"{id}hasPlayed", hasPlayed);
+        }
+
+        public void Load(string id)
+        {
+            hasPlayed = ES3.Load<bool>($"{id}hasPlayed");
         }
     }
 }
