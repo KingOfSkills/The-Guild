@@ -31,13 +31,11 @@ namespace TheGuild.SceneManagement
 
         public  void Save()
         {
-            print("Saving Game");
             GetComponent<SavingSystem>().Save();
         }
 
         public void Load()
         {
-            print("Loading Game");
             GetComponent<SavingSystem>().Load();
         }
     }

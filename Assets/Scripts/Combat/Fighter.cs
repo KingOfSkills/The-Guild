@@ -1,24 +1,20 @@
 using TheGuild.Core;
 using TheGuild.Movement;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheGuild.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] private float attackRange = 2f;
-        [SerializeField] private float attackCooldown = 3f;
-        [SerializeField] private float weaponDamage = 20f;
-        [SerializeField] private GameObject weaponPrefab = null;
         [SerializeField] private Transform handPostition;
+        [SerializeField] private WeaponSO currentWeaponSO = null;
 
         private Health target;
         private float timeSinceLastAttack = 100f;
 
         private void Start()
         {
-            SpawnWeapon();
+            EquipWeapon(currentWeaponSO);
         }
 
         private void Update()
@@ -38,16 +34,16 @@ namespace TheGuild.Combat
             }
         }
 
-        private void SpawnWeapon()
+        public void EquipWeapon(WeaponSO weaponSO)
         {
-            if (weaponPrefab == null) return;
-            Instantiate(weaponPrefab, handPostition);
+            currentWeaponSO = weaponSO;
+            weaponSO.Spawn(handPostition, GetComponent<Animator>());
         }
 
         private void AttackBehaviour()
         {
             transform.LookAt(target.transform);
-            if (timeSinceLastAttack >= attackCooldown)
+            if (timeSinceLastAttack >= currentWeaponSO.GetCooldown())
             {
                 TriggerAttack();
                 timeSinceLastAttack = 0f;
@@ -64,7 +60,7 @@ namespace TheGuild.Combat
         private void Hit()
         {
             if (target == null) return;
-            target.TakeDamage(weaponDamage);
+            target.TakeDamage(currentWeaponSO.GetDamage());
         }
 
         public void Attack(GameObject combatTarget)
@@ -81,7 +77,7 @@ namespace TheGuild.Combat
 
         public bool IsInAttackRange()
         {
-            return Vector3.Distance(transform.position, target.transform.position) <= attackRange;
+            return Vector3.Distance(transform.position, target.transform.position) <= currentWeaponSO.GetRange();
         }
 
         public void Cancel()

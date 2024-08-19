@@ -179,11 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db778621c76c74fa29ad47a036f872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 1.5
-  attackCooldown: 3
-  weaponDamage: 5
-  weaponPrefab: {fileID: 6142684225333224824, guid: 676a2aa3b2ddea041a85fec77bb0c24e, type: 3}
   handPostition: {fileID: 8359774847314647471}
+  currentWeaponSO: {fileID: 11400000, guid: e8e9e8ca29169984fbd80b7842ef397c, type: 2}
 --- !u!114 &-2665958000976115028
 MonoBehaviour:
   m_ObjectHideFlags: 0
