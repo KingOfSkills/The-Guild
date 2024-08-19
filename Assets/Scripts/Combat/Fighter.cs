@@ -1,5 +1,6 @@
 using TheGuild.Core;
 using TheGuild.Movement;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TheGuild.Combat
@@ -9,9 +10,16 @@ namespace TheGuild.Combat
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float attackCooldown = 3f;
         [SerializeField] private float weaponDamage = 20f;
+        [SerializeField] private GameObject weaponPrefab = null;
+        [SerializeField] private Transform handPostition;
 
         private Health target;
         private float timeSinceLastAttack = 100f;
+
+        private void Start()
+        {
+            SpawnWeapon();
+        }
 
         private void Update()
         {
@@ -28,6 +36,12 @@ namespace TheGuild.Combat
                 GetComponent<Mover>().Cancel();
                 AttackBehaviour();
             }
+        }
+
+        private void SpawnWeapon()
+        {
+            if (weaponPrefab == null) return;
+            Instantiate(weaponPrefab, handPostition);
         }
 
         private void AttackBehaviour()

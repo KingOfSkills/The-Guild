@@ -182,6 +182,8 @@ MonoBehaviour:
   attackRange: 1.5
   attackCooldown: 3
   weaponDamage: 5
+  weaponPrefab: {fileID: 6142684225333224824, guid: 676a2aa3b2ddea041a85fec77bb0c24e, type: 3}
+  handPostition: {fileID: 8359774847314647471}
 --- !u!114 &-2665958000976115028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,9 +222,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3838005430242853463}
     m_Modifications:
+    - target: {fileID: 126890, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 133518, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
       propertyPath: m_Name
       value: Character_Knights_Soldier_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 167656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 175308, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
       propertyPath: m_LocalPosition.x
@@ -274,6 +288,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &8359774847314647471 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 8359774847314243233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8359774847314653657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 417656, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
