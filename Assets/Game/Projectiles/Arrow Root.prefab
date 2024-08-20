@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1758566179886756301}
   - component: {fileID: 2129240984731894675}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: Arrow Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -50,6 +50,10 @@ MonoBehaviour:
   speed: 12
   isHoming: 0
   lifeTime: 5
+  hitEffect: {fileID: 6365104190227942549, guid: 957536bd6248c1b408d0fdf96d8948a0, type: 3}
+  destroyOnHit:
+  - {fileID: 190810648597689886}
+  lifeAfterHit: 0.25
 --- !u!65 &2129240984731894675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,7 +73,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.15, y: 0.15, z: 0.66}
+  m_Size: {x: 0.15, y: 0.15, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0.375}
 --- !u!1 &7359139009665394196
 GameObject:
@@ -282,6 +286,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
+--- !u!1 &190810648597689886 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1659504181823486, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}
+  m_PrefabInstance: {fileID: 189151224283804128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &193901834217072980 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4750687242688692, guid: c7f49c6920d49ba468b083941d79f2c0, type: 3}

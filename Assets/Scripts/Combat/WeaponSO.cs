@@ -1,3 +1,4 @@
+using System;
 using TheGuild.Core;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ namespace TheGuild.Combat
             if (weaponPrefab != null)
             {
                 Transform handTransform = GetTransform(rightHand, leftHand);
-                Transform newWeapon = Instantiate(weaponPrefab, handTransform).transform;
+                GameObject newWeapon = Instantiate(weaponPrefab, handTransform);
                 newWeapon.name = weaponName;
             }
 
@@ -38,7 +39,7 @@ namespace TheGuild.Combat
             Transform oldWeapon = rightHand.Find(weaponName);
             if (oldWeapon == null)
             {
-                leftHand.Find(weaponName);
+                oldWeapon = leftHand.Find(weaponName);
             }
 
             if (oldWeapon == null) return;

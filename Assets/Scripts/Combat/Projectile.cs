@@ -8,6 +8,9 @@ namespace TheGuild.Combat
         [SerializeField] private float speed;
         [SerializeField] private bool isHoming;
         [SerializeField] private float lifeTime = 5f;
+        [SerializeField] private GameObject hitEffect = null;
+        [SerializeField] private GameObject[] destroyOnHit;
+        [SerializeField] private float lifeAfterHit = 1f;
 
         private Health target;
         private float damage;
@@ -39,7 +42,6 @@ namespace TheGuild.Combat
         {
             this.target = target;
             this.damage = damage;
-            transform.LookAt(GetAimLocation());
         }
 
         private Vector3 GetAimLocation()
@@ -59,7 +61,20 @@ namespace TheGuild.Combat
                 if (target == targetHealth && !target.IsDead())
                 {
                     target.TakeDamage(damage);
-                    Destroy(gameObject);
+
+                    speed = 0f;
+
+                    if (hitEffect != null)
+                    {
+                        Instantiate(hitEffect, transform.position, transform.rotation);
+                    }
+
+                    foreach (GameObject gameObjectToDestory in destroyOnHit)
+                    {
+                        Destroy(gameObjectToDestory);
+                    }
+
+                    Destroy(gameObject, lifeAfterHit);
                 }
             }
         }
