@@ -179,7 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db778621c76c74fa29ad47a036f872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  handPostition: {fileID: 8359774847314647471}
+  rightHandTransform: {fileID: 8359774847314647471}
+  leftHandTransform: {fileID: 8359774847314590125}
   currentWeaponSO: {fileID: 11400000, guid: e8e9e8ca29169984fbd80b7842ef397c, type: 2}
 --- !u!114 &-2665958000976115028
 MonoBehaviour:
@@ -285,6 +286,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+--- !u!4 &8359774847314590125 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 481036, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}
+  m_PrefabInstance: {fileID: 8359774847314243233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8359774847314647471 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 423694, guid: 30cf93deff988e74e88a144bd2127c18, type: 3}

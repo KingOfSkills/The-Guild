@@ -40,6 +40,8 @@ namespace TheGuild.Core
 
         public void Load(string id)
         {
+            if (!ES3.KeyExists($"{id}health")) return;
+
             health = ES3.Load<float>($"{id}health");
             isDead = ES3.Load<bool>($"{id}isDead");
 

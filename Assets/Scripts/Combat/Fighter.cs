@@ -6,7 +6,8 @@ namespace TheGuild.Combat
 {
     public class Fighter : MonoBehaviour, IAction
     {
-        [SerializeField] private Transform handPostition;
+        [SerializeField] private Transform rightHandTransform;
+        [SerializeField] private Transform leftHandTransform;
         [SerializeField] private WeaponSO currentWeaponSO = null;
 
         private Health target;
@@ -37,7 +38,7 @@ namespace TheGuild.Combat
         public void EquipWeapon(WeaponSO weaponSO)
         {
             currentWeaponSO = weaponSO;
-            weaponSO.Spawn(handPostition, GetComponent<Animator>());
+            weaponSO.Spawn(rightHandTransform, leftHandTransform, GetComponent<Animator>());
         }
 
         private void AttackBehaviour()
@@ -60,7 +61,20 @@ namespace TheGuild.Combat
         private void Hit()
         {
             if (target == null) return;
-            target.TakeDamage(currentWeaponSO.GetDamage());
+
+            if (currentWeaponSO.HasProjectile())
+            {
+                currentWeaponSO.LaunchProjectile(rightHandTransform, leftHandTransform, target);
+            }
+            else
+            {
+                target.TakeDamage(currentWeaponSO.GetDamage());
+            }
+        }
+
+        private void Shoot()
+        {
+            Hit();
         }
 
         public void Attack(GameObject combatTarget)

@@ -119,6 +119,8 @@ namespace TheGuild.Control
 
         public void Load(string id)
         {
+            if (!ES3.KeyExists($"{id}currentWaypointIndex")) return;
+
             currentWaypointIndex = ES3.Load<int>($"{id}currentWaypointIndex");
         }
 

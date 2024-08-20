@@ -8,13 +8,10 @@ namespace TheGuild.SceneManagement
     {
         [SerializeField] private float fadeInTime = .4f;
 
-        private IEnumerator Start()
-        {
-            Fader fader = FindObjectOfType<Fader>();
-            fader.FadeOutImmediately();
-            yield return GetComponent<SavingSystem>().LoadLastScene();
-            yield return fader.FadeInRoutine(fadeInTime);
-        }
+        //private IEnumerator Start()
+        //{
+        //    yield return LoadLastSavedScene();
+        //}
 
         private void Update()
         {
@@ -27,6 +24,11 @@ namespace TheGuild.SceneManagement
             {
                 Load();
             }
+
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                StartCoroutine(LoadLastSavedScene());
+            }
         }
 
         public  void Save()
@@ -37,6 +39,14 @@ namespace TheGuild.SceneManagement
         public void Load()
         {
             GetComponent<SavingSystem>().Load();
+        }
+
+        private IEnumerator LoadLastSavedScene()
+        {
+            Fader fader = FindObjectOfType<Fader>();
+            fader.FadeOutImmediately();
+            yield return GetComponent<SavingSystem>().LoadLastScene();
+            yield return fader.FadeInRoutine(fadeInTime);
         }
     }
 }

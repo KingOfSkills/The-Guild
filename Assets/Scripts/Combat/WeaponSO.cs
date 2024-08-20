@@ -1,3 +1,4 @@
+using TheGuild.Core;
 using UnityEngine;
 
 namespace TheGuild.Combat
@@ -10,18 +11,56 @@ namespace TheGuild.Combat
         [SerializeField] private float attackRange = 2f;
         [SerializeField] private float attackCooldown = 3f;
         [SerializeField] private float weaponDamage = 20f;
+        [SerializeField] private bool isRightHanded = true;
+        [SerializeField] private Projectile projectile = null;
 
-        public void Spawn(Transform handPostition, Animator animator)
+        private const string weaponName = "Weapon";
+
+        public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
+            DestroyWeapon(rightHand, leftHand);
+
             if (weaponPrefab != null)
             {
-                Instantiate(weaponPrefab, handPostition);
+                Transform handTransform = GetTransform(rightHand, leftHand);
+                Transform newWeapon = Instantiate(weaponPrefab, handTransform).transform;
+                newWeapon.name = weaponName;
             }
 
             if (weaponAnimatorOverride != null)
             {
                 animator.runtimeAnimatorController = weaponAnimatorOverride;
             }
+        }
+
+        private void DestroyWeapon(Transform rightHand, Transform leftHand)
+        {
+            Transform oldWeapon = rightHand.Find(weaponName);
+            if (oldWeapon == null)
+            {
+                leftHand.Find(weaponName);
+            }
+
+            if (oldWeapon == null) return;
+
+            oldWeapon.name = "DESTROYING";
+            Destroy(oldWeapon.gameObject);
+        }
+
+        public void LaunchProjectile(Transform rightHand, Transform leftHand, Health target)
+        {
+            Projectile projectileInstance = Instantiate(projectile, GetTransform(rightHand, leftHand).position, Quaternion.identity);
+            projectileInstance.SetTarget(target, weaponDamage);
+        }
+
+        public bool HasProjectile()
+        {
+            return projectile != null;
+        }
+
+        private Transform GetTransform(Transform rightHand, Transform leftHand)
+        {
+            return (isRightHanded) ? rightHand : leftHand;
         }
 
         public float GetRange()
