@@ -1,4 +1,3 @@
-using System;
 using TheGuild.Core;
 using UnityEngine;
 
@@ -28,9 +27,14 @@ namespace TheGuild.Combat
                 newWeapon.name = weaponName;
             }
 
+            var animatorOverrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
             if (weaponAnimatorOverride != null)
             {
                 animator.runtimeAnimatorController = weaponAnimatorOverride;
+            }
+            else if (animatorOverrideController != null)
+            {
+                animator.runtimeAnimatorController = animatorOverrideController.runtimeAnimatorController;
             }
         }
 

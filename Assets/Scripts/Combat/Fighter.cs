@@ -1,10 +1,11 @@
 using TheGuild.Core;
 using TheGuild.Movement;
+using TheGuild.Saving;
 using UnityEngine;
 
 namespace TheGuild.Combat
 {
-    public class Fighter : MonoBehaviour, IAction
+    public class Fighter : MonoBehaviour, IAction, ISaveable
     {
         [SerializeField] private Transform rightHandTransform;
         [SerializeField] private Transform leftHandTransform;
@@ -15,7 +16,10 @@ namespace TheGuild.Combat
 
         private void Start()
         {
-            EquipWeapon(currentWeaponSO);
+            if (currentWeaponSO == null)
+            {
+                EquipWeapon(currentWeaponSO);
+            }
         }
 
         private void Update()
@@ -37,6 +41,7 @@ namespace TheGuild.Combat
 
         public void EquipWeapon(WeaponSO weaponSO)
         {
+            print($"Equipping {weaponSO.name}");
             currentWeaponSO = weaponSO;
             weaponSO.Spawn(rightHandTransform, leftHandTransform, GetComponent<Animator>());
         }
@@ -104,6 +109,20 @@ namespace TheGuild.Combat
         {
             GetComponent<Animator>().ResetTrigger("attack");
             GetComponent<Animator>().SetTrigger("cancelAttack");
+        }
+
+        public void Save(string id)
+        {
+            ES3.Save($"{id}weaponSOName", currentWeaponSO.name);
+        }
+
+        public void Load(string id)
+        {
+            if (!ES3.KeyExists($"{id}weaponSOName")) return;
+
+            string weaponSOName = ES3.Load<string>($"{id}weaponSOName");
+            print(weaponSOName);
+            EquipWeapon(Resources.Load<WeaponSO>(weaponSOName));
         }
     }
 }

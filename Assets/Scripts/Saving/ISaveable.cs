@@ -4,7 +4,5 @@ namespace TheGuild.Saving
     {
         void Save(string id);
         void Load(string id);
-        //object CaptureState();
-        //void RestoreState(object state);
     }
 }
