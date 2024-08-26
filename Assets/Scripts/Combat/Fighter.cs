@@ -8,6 +8,8 @@ namespace TheGuild.Combat
 {
     public class Fighter : MonoBehaviour, IAction, ISaveable
     {
+        public System.Action<Health> OnTargetChanged;
+
         [SerializeField] private Transform rightHandTransform;
         [SerializeField] private Transform leftHandTransform;
         [SerializeField] private WeaponSO currentWeaponSO = null;
@@ -87,6 +89,7 @@ namespace TheGuild.Combat
         {
             GetComponent<ActionScheduler>().StartAction(this);
             target = combatTarget.GetComponent<Health>();
+            OnTargetChanged?.Invoke(target);
         }
 
         public bool CanAttack(GameObject combatTarget)
@@ -104,6 +107,7 @@ namespace TheGuild.Combat
         {
             StopAttack();
             target = null;
+            OnTargetChanged?.Invoke(target);
         }
 
         private void StopAttack()

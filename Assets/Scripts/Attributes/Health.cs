@@ -7,6 +7,8 @@ namespace TheGuild.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
+        public System.Action OnHealthChanged;
+
         [SerializeField] private float health = 100f;
 
         private bool isDead = false;
@@ -19,10 +21,16 @@ namespace TheGuild.Attributes
         public void TakeDamage(float damage)
         {
             health = Mathf.Max(health - damage, 0f);
+            OnHealthChanged?.Invoke();
             if (health == 0 && !isDead)
             {
                 Die();
             }
+        }
+
+        public float GetHealthPercentage()
+        {
+            return health / GetComponent<BaseStats>().GetHealth();
         }
 
         private void Die()
