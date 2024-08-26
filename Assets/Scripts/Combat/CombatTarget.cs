@@ -1,4 +1,4 @@
-using TheGuild.Core;
+using TheGuild.Attributes;
 using UnityEngine;
 
 namespace TheGuild.Combat

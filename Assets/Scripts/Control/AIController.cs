@@ -1,4 +1,5 @@
 using System;
+using TheGuild.Attributes;
 using TheGuild.Combat;
 using TheGuild.Core;
 using TheGuild.Movement;

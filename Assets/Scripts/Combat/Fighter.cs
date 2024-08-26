@@ -1,3 +1,4 @@
+using TheGuild.Attributes;
 using TheGuild.Core;
 using TheGuild.Movement;
 using TheGuild.Saving;

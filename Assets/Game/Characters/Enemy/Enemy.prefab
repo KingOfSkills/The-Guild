@@ -56,6 +56,18 @@ PrefabInstance:
       propertyPath: health
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7463078873966117452, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
+      propertyPath: progressionSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b1e386baa29db64f97547a31a5b751c, type: 2}
+    - target: {fileID: 7463078873966117452, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
+      propertyPath: startingLevel
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7463078873966117452, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
+      propertyPath: characterProgressionSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4b1e386baa29db64f97547a31a5b751c, type: 2}
     m_RemovedComponents:
     - {fileID: 4233132021709030141, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}
     - {fileID: 6564084471824399969, guid: c4089cf22e773ae47976c4bb76ac6824, type: 3}

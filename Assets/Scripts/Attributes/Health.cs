@@ -1,13 +1,20 @@
+using TheGuild.Core;
 using TheGuild.Saving;
+using TheGuild.Stats;
 using UnityEngine;
 
-namespace TheGuild.Core
+namespace TheGuild.Attributes
 {
     public class Health : MonoBehaviour, ISaveable
     {
         [SerializeField] private float health = 100f;
 
         private bool isDead = false;
+
+        private void Start()
+        {
+            health = GetComponent<BaseStats>().GetHealth();
+        }
 
         public void TakeDamage(float damage)
         {

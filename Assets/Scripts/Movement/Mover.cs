@@ -1,8 +1,9 @@
 using TheGuild.Combat;
-using TheGuild.Core;
+using TheGuild.Attributes;
 using TheGuild.Saving;
 using UnityEngine;
 using UnityEngine.AI;
+using TheGuild.Core;
 
 namespace TheGuild.Movement
 {
@@ -68,9 +69,9 @@ namespace TheGuild.Movement
 
             ES3.LoadInto($"{id}transform ", transform);
             navMeshAgent.enabled = false;
-            this.transform.position = transform.transform.position;
-            this.transform.rotation = transform.transform.rotation;
-            this.transform.localScale = transform.transform.localScale;
+            transform.position = transform.transform.position;
+            transform.rotation = transform.transform.rotation;
+            transform.localScale = transform.transform.localScale;
             navMeshAgent.enabled = true;
         }
 

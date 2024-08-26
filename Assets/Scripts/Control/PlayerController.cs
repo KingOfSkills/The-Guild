@@ -1,5 +1,5 @@
 using TheGuild.Combat;
-using TheGuild.Core;
+using TheGuild.Attributes;
 using TheGuild.Movement;
 using UnityEngine;
 
